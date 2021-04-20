@@ -1,0 +1,271 @@
+POST plan/_cache/clear
+
+GET _cat/indices
+
+DELETE plan
+
+
+
+
+GET plan/_mapping
+
+
+GET plan/_search
+{
+  "query" : {
+    "has_parent" : {
+      "parent_type" : "plan",
+      "query" : {
+         "match_all" : {}
+       }
+     }
+   }
+ }
+
+
+
+GET plan/_search
+{
+  "query" : {
+    "has_parent" : {
+      "parent_type" : "plan",
+      "query" : {
+        "bool" : {
+          "must" : [
+            {
+             "match" : {
+               "objectId" : "12xvxc345ssdsds-508"
+            }
+          }
+        ]
+       }
+      }
+     }
+    }
+   }
+   
+  
+
+
+GET plan/_search
+{
+  "query" : {
+    "has_parent" : {
+      "parent_type" : "planservice",
+      "query" : {
+        "bool" : {
+          "must" : [
+            {
+             "match" : {
+               "objectId" : "27283xvx9sdf-507"
+            }
+          }
+        ]
+       }
+      }
+     }
+    }
+   }
+
+   
+   
+GET plan/_search
+{
+  "query" : {
+    "has_parent" : {
+      "parent_type" : "planservice",
+      "query" : {
+        "bool" : {
+          "must" : [
+            {
+             "match" : {
+               "objectId" : "27283xvx9asdff-504"
+            }
+          }
+        ]
+       }
+      }
+     }
+    }
+   }
+   
+
+
+
+GET plan/_search
+{
+  "query": {
+    "wildcard": {
+      "_org": {
+        "value": "example*"
+      }
+    }
+  }
+}
+
+
+GET plan/_search
+{
+  "query": {
+    "wildcard": {
+      "name": {
+        "value": "Yearly*"
+      }
+    }
+  }
+}
+
+
+GET plan/_search
+{
+  "query" : {
+    "bool" : {
+      "must" : {
+        "bool" : {
+          "must" : [
+            {"match" : {"copay" : 175}},
+            {"match" : {"deductible" : 10}}
+          ]
+         }
+        }
+       }
+      }
+     }
+     
+
+GET plan/_search
+{
+  "query" : {
+    "bool" : {
+      "must" : {
+        "bool" : {
+          "must" : [
+            {"match" : {"copay" : 0}},
+            {"match" : {"deductible" : 10}}
+          ]
+         }
+        }
+       }
+      }
+     }
+     
+     
+GET plan/_search
+{
+  "query" : {
+    "bool" : {
+      "must" : {
+        "bool" : {
+          "must" : [
+            {"match" : {"_org" : "example.com"}}
+          ]
+         }
+        }
+       }
+      }
+     }
+     
+     
+GET plan/_search
+{
+  "query" : {
+    "bool" : {
+      "must" : {
+        "bool" : {
+          "must" : [
+            {"match" : {"name" : "well baby"}}
+          ]
+         }
+        }
+       }
+      }
+     }
+
+
+
+GET plan/_search
+{
+  "query" : {
+    "has_child" : {
+      "type" : "membercostshare",
+      "query" : {
+        "bool" : {
+          "must" : [
+            {
+             "match" : {
+               "objectId" : "1234vxc2324sdf-501"
+            }
+          }
+        ]
+       }
+      }
+     }
+    }
+   }
+   
+
+
+
+
+
+
+GET plan/_search
+{
+  "query" : {
+    "has_child" : {
+      "type" : "membercostshare_copy",
+      "query" : {
+        "bool" : {
+          "must" : [
+            {
+             "match" : {
+               "deductible" : 1010
+            }
+          }
+        ]
+       }
+      }
+     }
+    }
+   }
+
+
+
+GET /plan/_search
+{
+  "query" : {
+    "has_child" : {
+      "type" : "planservice",
+      "query" : {
+        "has_child" : {
+          "type" : "service",
+            "query" : {
+              "match" : {
+                "objectId" : "1234520xvc30sfs-505"
+              } 
+             }
+            }  
+           }
+          }
+         }
+        }
+        
+        
+GET /plan/_search
+{
+  "query" : {
+    "has_child" : {
+      "type" : "planservice",
+      "query" : {
+        "has_child" : {
+          "type" : "service",
+            "query" : {
+              "match" : {
+                "objectId" : "1234520xvc30asdf-502"
+              } 
+             }
+            }  
+           }
+          }
+         }
+        }
